@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Will You Marry Me?</title>
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(to bottom, #ffecd2, #fcb69f);
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .message {
+      font-size: 2rem;
+      color: #fff;
+      opacity: 0;
+      animation: fadeIn 2s forwards;
+    }
+
+    .message:nth-child(2) {
+      animation-delay: 3s;
+    }
+
+    .message:nth-child(3) {
+      animation-delay: 6s;
+    }
+
+    .message:nth-child(4) {
+      animation-delay: 9s;
+    }
+
+    .proposal {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #fff;
+      margin-top: 20px;
+      opacity: 0;
+      animation: fadeInScale 2s 12s forwards;
+    }
+
+    .hearts {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .heart {
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      position: absolute;
+      transform: rotate(45deg);
+      animation: floatHearts 10s linear infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInScale {
+      0% {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes floatHearts {
+      0% {
+        transform: translateY(100vh) rotate(45deg);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="message">Hey you...</div>
+    <div class="message">You make my world brighter every day.</div>
+    <div class="message">Life with you is an adventure I never want to end.</div>
+    <div class="message">So I have just one question...</div>
+    <div class="proposal">Will you marry me? 💍❤️</div>
+  </div>
+
+  <div class="hearts">
+    <!-- Generate 30 floating hearts -->
+    <script>
+      for (let i = 0; i < 30; i++) {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDelay = Math.random() * 10 + 's';
+        heart.style.animationDuration = 5 + Math.random() * 5 + 's';
+        document.querySelector('.hearts').appendChild(heart);
+      }
+    </script>
+  </div>
+</body>
+</html>
